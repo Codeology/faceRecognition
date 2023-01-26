@@ -11,7 +11,8 @@ function Fetch(props) {
     // useEffect(() => {
     //     fetch("http://192.168.1.139:5000/members");
     // }, []);
-    fetch("http://192.168.1.139:5000/members");
+    fetch("http://192.168.4.23:3000/members");
+
     const fetchImage = async () => {
         const storage = getStorage();
         const reference = ref(storage, '/test.jpg');
@@ -19,7 +20,6 @@ function Fetch(props) {
             setUrl(x);
         });
         
-
     };
         
 
