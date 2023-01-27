@@ -18,17 +18,18 @@ function NameInput(props) {
     return (
         <View>
             <TextInput 
-            style={{height: 40}}
+            style={styles.textinput}
             placeholder="Input Person name"
             onChangeText={nameHandler}
             value = {enteredName}
             />
 
-            <View>
+            <View style={styles.ButtonContainer}>
                 <Button 
                     title='Confirm'
                     onPress={onNameInput}
-                    color='#b180f0'
+                    color='#323232'
+    
                 />
 
             </View>
@@ -55,5 +56,25 @@ const styles = StyleSheet.create({
         // borderBottomColor: '#cccccc',
         padding: 20,
         backgroundColor:'#311b6b'
+    },
+    textinput: {
+        flex: 2,
+        borderWidth: 1,
+        borderColor: '#DDEADB',
+        backgroundColor:'#DDEADB',
+        color: '#3A554C',
+        width: '100%',
+        marginRight: 20,
+        padding: 8,
+        borderRadius: 10
+
+    },
+    ButtonContainer: {
+        flex: 1,
+        padding: 10,
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'center'
+        
     }
 })
