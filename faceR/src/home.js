@@ -24,12 +24,14 @@ export default function Home({navigation}) {
     <View style={styles.container}>
         {/* <Image style={styles.image} source={require("../assets/favicon.png")}/> */}
         <View style={styles.headContainer}>
-        <Image style={styles.logo} source= {require('../assets/codyLogo.png')} />
-        <Text style = {styles.title}> CODEOLOGY </Text>
+            <Image style={styles.logo} source= {require('../assets/codyLogo.png')} />
+            <Text style = {styles.title}> CODEOLOGY </Text>
         </View>   
+
         <View style = {styles.AppName}>
-        <Text style = {styles.Name}> OpenCaVo </Text>
+            <Text style = {styles.Name}> OpenCaVo </Text>
         </View>
+
         <View style = {styles.AppName}>
             <Pressable style={styles.buttonContainer} onPress={PressHandler}>
                 <Text style={styles.button} >START</Text>

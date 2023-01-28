@@ -61,27 +61,30 @@ const Members = ({navigation}) => {
     return (
        
         <View style={styles.container}>
-            {/* <View styles={styles.ButtonContainer}>
-                <Button title='Select Picture' onPress={pickImage} color='#236245'/>
-            </View> */}
 
-            <View style = {styles.AppName}>
-                <Pressable style={styles.ButtonContainer} onPress={pickImage}>
-                    <Text style={styles.button} >Select Picture</Text>
+            <View style={styles.ButtonContainer}>
+                <Pressable style={styles.ButtonShape} onPress={pickImage}>
+                    <Text style={styles.buttonText}>Select Picture</Text>
                 </Pressable>
+
             </View>
+            
 
             <View style={styles.imageContainer}>
-                {!image && <Image source = {require('../assets/avo_pit.png')}  style={{ width: 200, height: 200 }} />}
-                {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
+                {!image && <Image source = {require('../assets/avo_pit.png')}  style={styles.image} />}
+                {image && <Image source={{ uri: image.uri }} style={styles.image} />}
             </View>
-            <Button style={styles.ButtonContainer} title='Clear' onPress={resetImage} color='#236245'/>
+
+            <View style={styles.ButtonContainer}>
+                <Pressable style={styles.clearShape} onPress={resetImage}>
+                    <Text style={styles.clearText}>Clear</Text>
+                </Pressable>
+            </View>
             
             <View style={styles.inputContainer}>
                 <NameInput onAddName={setImageName} />
             </View>
            
-
             <View style={styles.uploadCont}>
                 <Button title= 'Save Member' onPress={uploadImage}/>
             </View>
@@ -101,26 +104,44 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: '100',
     padding: 20
   },
-  ButtonContainer:{
+  ButtonContainer: {
     flex: 1,
-    color: '236245',
-    padding: 20,
-    // margin: 8,
-    // borderRadius: 6,
-    // color: '#FFFFF',
-    // backgroundColor: '#629081',
-    // width: 200,
-    // height: 50,
-    // alignItems: 'center',
-  },
-  button:{
-    color: '#FFFF',
-    fontSize: 25,
-    fontWeight: 'bold',
     padding: 10
   },
+  ButtonShape:{
+    backgroundColor: '#236245',
+    margin: 8,
+    marginBottom: 20,
+    borderRadius: 6,
+    width: 250,
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonText:{
+    color: '#FFFF',
+    fontSize: 25,
+    padding: 10,
+    textAlignVertical: 'center'
+  },
+  clearShape:{
+    backgroundColor: '#236245',
+    margin: 8,
+    borderRadius: 6,
+    width: 90,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  clearText:{
+    color: '#FFFF',
+    fontSize: 17,
+    padding: 10,
+    textAlignVertical: 'center'
+  },
   imageContainer:{
-    flex: 3
+    flex: 5,
+    padding: 5,
   },
   inputContainer:{
     flex: 2,
