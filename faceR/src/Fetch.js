@@ -5,6 +5,7 @@ import {getStorage, ref, getDownloadURL, downloadFile} from 'firebase/storage'
 
 
 function Fetch(props) {
+    const [testImage, setTestImage] = useState(false);
     const [url, setUrl] = useState();
     const [data, setData] = useState([]);
 
@@ -15,20 +16,26 @@ function Fetch(props) {
 
     const fetchImage = async () => {
         const storage = getStorage();
-        const reference = ref(storage, '/test.jpg');
+        const reference = ref(storage, 'attendance/test.jpg');
         await getDownloadURL(reference).then((x) => {
             setUrl(x);
         });
         
     };
+
+    const storage = getStorage();
+    const reference = ref(storage, 'attendance/test.jpg');
+    getDownloadURL(reference).then((x) => {
+        setUrl(x);
+    });
+    
         
 
     return (
     <Modal visible={props.visible} animationType='slide'>
+
         <View style={styles.inputContainer}>
-            <View style = {styles.button}>
-                <Button title='fetch' onPress={fetchImage} color='#f31282' />
-            </View>
+            
             <View style={styles.button}>
                 <Button title= 'Cancel' onPress={props.onCancel}  color='#f31282'/>
             </View>
@@ -59,18 +66,21 @@ const styles = StyleSheet.create({
         // borderBottomWidth: 1,
         // borderBottomColor: '#cccccc',
         padding: 20,
-        backgroundColor:'#311b6b'
+        backgroundColor:'#A4E3AA'
     },
     image: {
-        width: 100,
-        height: 100,
+        width: 350,
+        height: 350,
         margin: 20
-
+    },
+    imageCont: {
+        flex: 3,
+        paddingTop: 20
     },
     textinput: {
         borderWidth: 1,
         borderColor: '#e4d0ff',
-        backgroundColor:'#e4d0ff',
+        backgroundColor:'#236245',
         color: '#120438',
         width: '100%',
         marginRight: 8,

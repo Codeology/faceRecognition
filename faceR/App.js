@@ -9,16 +9,7 @@ import Navigator from './routes/homestack';
 
 export default function App() {
 
-  const [isVisible, setModalIsVisible] = useState(false);
-  function closeAttendanceDisplay() {
-    setModalIsVisible(false);
-  }
-
-  function startFetch(){
-    setModalIsVisible(true);
-
-  }
-
+  
 
   return (
     <Navigator></Navigator>

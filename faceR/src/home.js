@@ -15,13 +15,14 @@ export default function Home({navigation}) {
 
   }
   const PressHandler = () => {
-    navigation.navigate('Members');
-
+    navigation.navigate('Selection');
   }
+  
 
 
   return (
     <View style={styles.container}>
+      
         {/* <Image style={styles.image} source={require("../assets/favicon.png")}/> */}
         <View style={styles.headContainer}>
             <Image style={styles.logo} source= {require('../assets/codyLogo.png')} />

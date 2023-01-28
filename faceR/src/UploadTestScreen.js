@@ -3,10 +3,10 @@ import React, {useState} from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import {firebase} from '../config';
 
-function UploadTestScreen() {
+
+const Attendance = ({navigation}) => {
     const [testImage, setTestImage] = useState(false);
     const [uploading, setUploading] = useState(false);
-
 
 
     const pickTestImage = async () => {
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default UploadTestScreen
+export default Attendance

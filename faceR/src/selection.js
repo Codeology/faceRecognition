@@ -6,7 +6,7 @@ import { async } from '@firebase/util';
 
 import NameInput from './NameInput';
 
-const Members = ({navigation}) => {
+const Selection = ({navigation}) => {
     const [image, setImage] = useState(false);
     const [imageName, setImageName] = useState('');
     const [uploading, setUploading] = useState(false);
@@ -21,40 +21,12 @@ const Members = ({navigation}) => {
     }
 
 
-    const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [4,3],
-            quality: 0.5,        
-        })
-        const source = {uri: result.assets[0].uri};
-        console.log(source);
-        setImage(source);
-    };
+    const nextScreen = () => {
+      navigation.navigate('Members');
+    }
 
-    const uploadImage = async () => {
-        setUploading(true);
-        const response = await fetch(image.uri);
-        const blob = await response.blob();
-        const filename = '/known/' + imageName + '.jpg'
-        // const filename = image.uri.substring(image.uri.lastIndexOf('/')+1);
-        var ref = firebase.storage().ref().child(filename).put(blob);
-
-        try {
-            await ref;
-        } catch (e) {
-            console.log(e);
-        }
-        setUploading(false);
-        Alert.alert(
-            'Photo uploadeded!'
-        );
-        setImage(null);
-    };
-    const resetImage = async() => {
-        var source = require('../assets/avo_pit.png');
-        setImage(source);
+    const atScreen = () => {
+      navigation.navigate('test');
     }
 
 
@@ -62,33 +34,23 @@ const Members = ({navigation}) => {
        
         <View style={styles.container}>
 
-            <View style={styles.ButtonContainer}>
-                <Pressable style={styles.ButtonShape} onPress={pickImage}>
-                    <Text style={styles.buttonText}>Select Picture</Text>
-                </Pressable>
-
-            </View>
-            
-
             <View style={styles.imageContainer}>
                 {!image && <Image source = {require('../assets/avo_pit.png')}  style={styles.image} />}
                 {image && <Image source={{ uri: image.uri }} style={styles.image} />}
             </View>
 
             <View style={styles.ButtonContainer}>
-                <Pressable style={styles.clearShape} onPress={resetImage}>
-                    <Text style={styles.clearText}>Clear</Text>
+                <Pressable style={styles.ButtonShape} onPress={nextScreen}>
+                    <Text style={styles.buttonText}>Add Members</Text>
                 </Pressable>
             </View>
-            
-            <View style={styles.inputContainer}>
-                <NameInput onAddName={setImageName} />
+
+            <View style={styles.ButtonContainer}>
+                <Pressable style={styles.ButtonShape} onPress={atScreen}>
+                    <Text style={styles.buttonText}> Attendance </Text>
+                </Pressable>
             </View>
-           
-            <View style={styles.uploadCont}>
-                <Button title= 'Save Member' onPress={uploadImage}/>
-            </View>
-            
+
         </View>
     )
 }
@@ -159,4 +121,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Members
+export default Selection
