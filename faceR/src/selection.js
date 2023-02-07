@@ -29,6 +29,10 @@ const Selection = ({navigation}) => {
       navigation.navigate('test');
     }
 
+    const allMemberScreen = () => {
+      navigation.navigate('listMembers');
+    }
+
 
     return (
        
@@ -51,6 +55,12 @@ const Selection = ({navigation}) => {
                 </Pressable>
             </View>
 
+            <View style={styles.ButtonContainer}>
+                <Pressable style={styles.ButtonShape} onPress={allMemberScreen}>
+                    <Text style={styles.buttonText}> All Members </Text>
+                </Pressable>
+            </View>
+
         </View>
     )
 }
@@ -62,8 +72,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#A4E3AA',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopRightRadius: '100',
-    borderTopLeftRadius: '100',
+    borderTopRightRadius: 50,
+    borderTopLeftRadius: 50,
     padding: 20
   },
   ButtonContainer: {
@@ -113,7 +123,7 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 300,
-    margin: 20,
+    margin: 10,
   },
   uploadCont: {
     flex: 1,

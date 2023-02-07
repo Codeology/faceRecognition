@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#A4E3AA',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopRightRadius: '100',
-    borderTopLeftRadius: '100',
+    borderTopRightRadius: 100,
+    borderTopLeftRadius: 100,
     padding: 20
   },
   ButtonContainer: {

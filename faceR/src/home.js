@@ -15,6 +15,7 @@ export default function Home({navigation}) {
 
   }
   const PressHandler = () => {
+    console.log('PRESS');
     navigation.navigate('Selection');
   }
   
