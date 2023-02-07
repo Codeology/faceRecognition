@@ -58,6 +58,17 @@ config = {
 
 firebase_storage = pyrebase.initialize_app(config)
 storage = firebase_storage.storage()
+# all_files = storage.li()
+
+# for file in all_files:
+#     print(file.name)
+storageRef = storage.ref("attendance")
+
+# storage.child("Steph Curry.jpg").download("steph curry.jpg")
+all_files = storageRef.listAll()
+files = []
+for file in all_files:
+    print(file.name)
 
 
 @app.route("/members")
@@ -72,10 +83,10 @@ def members():
         shutil.rmtree(os.path.join('.', 'unknown'))
 
     # storage.child("Steph Curry.jpg").download("steph curry.jpg")
-    all_files = storage.list_files()
+    all_files = storage.child('attendance').list_files()
     files = []
-    # for file in all_files:
-    #     print(file.name)
+    for file in all_files:
+        print(file.name)
     os.makedirs(os.path.join('.', 'known'))
     os.makedirs(os.path.join('.', 'unknown'))
     for file in all_files:
