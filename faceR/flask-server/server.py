@@ -62,13 +62,13 @@ storage = firebase_storage.storage()
 
 # for file in all_files:
 #     print(file.name)
-storageRef = storage.ref("attendance")
+# storageRef = storage.ref("attendance")
 
-# storage.child("Steph Curry.jpg").download("steph curry.jpg")
-all_files = storageRef.listAll()
-files = []
-for file in all_files:
-    print(file.name)
+# # storage.child("Steph Curry.jpg").download("steph curry.jpg")
+# all_files = storageRef.listAll()
+# files = []
+# for file in all_files:
+#     print(file.name)
 
 
 @app.route("/members")
@@ -79,22 +79,24 @@ def members():
         os.remove(os.path.join('.', f))
     if (os.path.exists("./known")):
         shutil.rmtree(os.path.join('.', 'known'))
-    if (os.path.exists("./unknown")):
-        shutil.rmtree(os.path.join('.', 'unknown'))
+    if (os.path.exists("./attendance")):
+        shutil.rmtree(os.path.join('.', 'attendance'))
 
     # storage.child("Steph Curry.jpg").download("steph curry.jpg")
-    all_files = storage.child('attendance').list_files()
+    all_files = storage.list_files()
     files = []
-    for file in all_files:
-        print(file.name)
+    # for file in all_files:
+    #     print(file.name)
     os.makedirs(os.path.join('.', 'known'))
-    os.makedirs(os.path.join('.', 'unknown'))
+    os.makedirs(os.path.join('.', 'attendance'))
     for file in all_files:
-        if file.name.startswith('test'):
-            file.download_to_filename("unknown/"+file.name)
-        else:
-            file.download_to_filename("known/" + file.name)
         print(file.name)
+        if file.name.startswith('a'):
+            print(94)
+            file.download_to_filename(file.name)
+        else:
+            file.download_to_filename(file.name)
+        
     # load known faces and encodings
     known_images_dir = "known"
     names = []
@@ -109,8 +111,8 @@ def members():
     # print(names)
     # print(len(known_encodings))
     # load unknown faces and encodings
-    unknown_images_dir = "unknown"
-    filepath = "unknown/test.jpg"
+    unknown_images_dir = "attendance"
+    filepath = "attendance/test.jpg"
     pic2 = face_recognition.load_image_file(filepath)
     image_array = pic2
     pic2 = cv2.cvtColor(pic2, cv2.COLOR_BGR2RGB)
@@ -136,8 +138,8 @@ def members():
         pic2 = cv2.putText(pic2, name, (left, bottom), cv2.FONT_HERSHEY_SIMPLEX,
                            textscale, (0, 255, 0), int(textscale))
     # show image
-    cv2.imwrite("unknown/test.jpg", pic2)
-    storage.child('test.jpg').put("unknown/test.jpg")
+    cv2.imwrite("attendance/test.jpg", pic2)
+    storage.child('attendance/testR.jpg').put("attendance/test.jpg")
     print(42)
 
     return jsonify(unk_names)

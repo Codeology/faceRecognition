@@ -24,7 +24,7 @@ function Fetch(props) {
     };
 
     const storage = getStorage();
-    const reference = ref(storage, 'attendance/test.jpg');
+    const reference = ref(storage, 'attendance/testR.jpg');
     getDownloadURL(reference).then((x) => {
         setUrl(x);
     });
@@ -36,14 +36,16 @@ function Fetch(props) {
 
         <View style={styles.inputContainer}>
             
+            <Image 
+            style={{ width: 400, height: 400 }}
+            source = {{uri: url}}
+            />
+
+
             <View style={styles.button}>
                 <Button title= 'Cancel' onPress={props.onCancel}  color='#f31282'/>
             </View>
             
-            <Image 
-            style={{ width: 400, height: 200 }}
-            source = {{uri: url}}
-            />
         </View>
         
            
